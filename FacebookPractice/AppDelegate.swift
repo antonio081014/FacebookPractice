@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        
+        let layout = UICollectionViewFlowLayout()
+        let homeViewController = HomeViewController(collectionViewLayout: layout)
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        self.window?.rootViewController = navigationController
+        UINavigationBar.appearance().barTintColor = UIColor(red: 51/255, green: 90/255, blue: 149/255, alpha: 1)
+        UINavigationBar.appearance().isTranslucent = false
         return true
     }
 
