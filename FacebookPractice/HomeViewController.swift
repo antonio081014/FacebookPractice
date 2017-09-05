@@ -13,6 +13,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.navigationItem.title = "Facebook Feed"
         self.collectionView?.backgroundColor = .red
     }
 }
