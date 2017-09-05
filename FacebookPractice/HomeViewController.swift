@@ -32,7 +32,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 50)
+        return CGSize(width: collectionView.bounds.width, height: 200)
     }
 }
 
@@ -49,8 +49,21 @@ class FeedCell: UICollectionViewCell {
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Sample News"
+        label.numberOfLines = 2
+        let attributedText = NSMutableAttributedString(string: "Mark Zuckerberg", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSMutableAttributedString(string: "\nDecember 18 • San Francisco • ", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor:UIColor.init(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
+        
+        let attachment = NSTextAttachment()
+        // TODO: add image name string
+        attachment.image = UIImage(named: "")
+        attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
+        attributedText.append(NSAttributedString(attachment: attachment))
+        
+        label.attributedText = attributedText
         return label
     }()
     
@@ -59,23 +72,58 @@ class FeedCell: UICollectionViewCell {
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
         iv.backgroundColor = .red
+        // TODO: add image name string
+        iv.image = UIImage(named: "")
         return iv
+    }()
+    
+    let statusTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.text = "Meanwhile, Beast turned to the dark side."
+        textView.font = UIFont.systemFont(ofSize: 14)
+        textView.backgroundColor = .green
+        return textView
+    }()
+    
+    let statusImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        // TODO: add image name string.
+        imageView.image = UIImage(named: "")
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .blue
+        return imageView
     }()
     
     func setupViews() {
         self.backgroundColor = .white
         self.addSubview(self.nameLabel)
         self.addSubview(self.profileImageView)
+        self.addSubview(self.statusTextView)
+        self.addSubview(self.statusImageView)
         
-        self.profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        self.profileImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        self.profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         self.profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.profileImageView.widthAnchor.constraint(equalTo: self.profileImageView.heightAnchor, constant: 0).isActive = true
+        self.profileImageView.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        self.nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-        self.nameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        self.nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant:8).isActive = true
+        self.nameLabel.bottomAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 0).isActive = true
         self.nameLabel.leftAnchor.constraint(equalTo: self.profileImageView.rightAnchor, constant: 8).isActive = true
         self.nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        
+        self.statusTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.statusTextView.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 8).isActive = true
+//        self.statusTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 8).isActive = true
+        self.statusTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        self.statusTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        self.statusImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.statusImageView.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 8).isActive = true
+        self.statusImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        self.statusImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         
     }
 }
