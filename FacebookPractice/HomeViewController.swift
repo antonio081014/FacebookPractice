@@ -58,8 +58,7 @@ class FeedCell: UICollectionViewCell {
         attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
         
         let attachment = NSTextAttachment()
-        // TODO: add image name string
-        attachment.image = UIImage(named: "")
+        attachment.image = #imageLiteral(resourceName: "globe_small")
         attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
         attributedText.append(NSAttributedString(attachment: attachment))
         
@@ -71,9 +70,7 @@ class FeedCell: UICollectionViewCell {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
-        iv.backgroundColor = .red
-        // TODO: add image name string
-        iv.image = UIImage(named: "")
+        iv.image = #imageLiteral(resourceName: "zuckprofile")
         return iv
     }()
     
@@ -82,7 +79,6 @@ class FeedCell: UICollectionViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "Meanwhile, Beast turned to the dark side."
         textView.font = UIFont.systemFont(ofSize: 14)
-        textView.backgroundColor = .green
         return textView
     }()
     
@@ -90,10 +86,8 @@ class FeedCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: add image name string.
-        imageView.image = UIImage(named: "")
+        imageView.image = #imageLiteral(resourceName: "zuckdog")
         imageView.layer.masksToBounds = true
-        imageView.backgroundColor = .blue
         return imageView
     }()
     
