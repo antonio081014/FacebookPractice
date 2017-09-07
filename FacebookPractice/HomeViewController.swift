@@ -100,6 +100,13 @@ class FeedCell: UICollectionViewCell {
         return label
     }()
     
+    let dividerLineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.rgb(red: 226, green: 228, blue: 232)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     func setupViews() {
         self.backgroundColor = .white
         self.addSubview(self.nameLabel)
@@ -107,6 +114,7 @@ class FeedCell: UICollectionViewCell {
         self.addSubview(self.statusTextView)
         self.addSubview(self.statusImageView)
         self.addSubview(self.likesCommentLabel)
+        self.addSubview(self.dividerLineView)
         
         self.profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         self.profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
@@ -132,5 +140,11 @@ class FeedCell: UICollectionViewCell {
         self.likesCommentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         self.likesCommentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         self.likesCommentLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
+        self.dividerLineView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
+        self.dividerLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
+        self.dividerLineView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        self.dividerLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
     }
 }
