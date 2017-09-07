@@ -32,7 +32,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 250)
+        return CGSize(width: collectionView.bounds.width, height: 400)
     }
 }
 
@@ -96,7 +96,7 @@ class FeedCell: UICollectionViewCell {
         label.text = "488 Likes    10,7k Comments"
         label.font = UIFont.systemFont(ofSize: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.rgb(red: 155, green: 161, blue: 11)
+        label.textColor = UIColor.rgb(red: 155, green: 161, blue: 171)
         return label
     }()
     
@@ -107,6 +107,21 @@ class FeedCell: UICollectionViewCell {
         return view
     }()
     
+    let likeButton: UIButton = createButton(title: "Like", image: #imageLiteral(resourceName: "like"))
+    let commentButton: UIButton = createButton(title: "Comment", image: #imageLiteral(resourceName: "comment"))
+    let shareButton: UIButton = createButton(title: "Share", image: #imageLiteral(resourceName: "share"))
+    
+    static func createButton(title: String, image: UIImage) -> UIButton {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.rgb(red: 143, green: 150, blue: 163), for: .normal)
+        button.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        return button
+    }
+    
     func setupViews() {
         self.backgroundColor = .white
         self.addSubview(self.nameLabel)
@@ -115,6 +130,9 @@ class FeedCell: UICollectionViewCell {
         self.addSubview(self.statusImageView)
         self.addSubview(self.likesCommentLabel)
         self.addSubview(self.dividerLineView)
+        self.addSubview(self.likeButton)
+        self.addSubview(self.commentButton)
+        self.addSubview(self.shareButton)
         
         self.profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         self.profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
@@ -126,7 +144,7 @@ class FeedCell: UICollectionViewCell {
         self.nameLabel.leftAnchor.constraint(equalTo: self.profileImageView.rightAnchor, constant: 8).isActive = true
         self.nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         
-        self.statusTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.statusTextView.leftAnchor .constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.statusTextView.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 8).isActive = true
         self.statusTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         self.statusTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -137,7 +155,7 @@ class FeedCell: UICollectionViewCell {
         
         self.likesCommentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.likesCommentLabel.topAnchor.constraint(equalTo: self.statusImageView.bottomAnchor, constant: 0).isActive = true
-        self.likesCommentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+//        self.likesCommentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         self.likesCommentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         self.likesCommentLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
@@ -146,5 +164,23 @@ class FeedCell: UICollectionViewCell {
         self.dividerLineView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         self.dividerLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
+        self.likeButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.likeButton.topAnchor.constraint(equalTo: self.likesCommentLabel.bottomAnchor, constant: 0).isActive = true
+        self.likeButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        self.likeButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.likeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        self.commentButton.topAnchor.constraint(equalTo: self.likesCommentLabel.bottomAnchor, constant: 0).isActive = true
+        self.commentButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        self.commentButton.leftAnchor.constraint(equalTo: self.likeButton.rightAnchor, constant: 8).isActive = true
+        self.commentButton.heightAnchor.constraint(equalTo: self.likeButton.heightAnchor, constant: 0).isActive = true
+        self.commentButton.widthAnchor.constraint(equalTo: self.likeButton.widthAnchor, constant: 0).isActive = true
+        
+        self.shareButton.topAnchor.constraint(equalTo: self.likesCommentLabel.bottomAnchor, constant: 0).isActive = true
+        self.shareButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        self.shareButton.leftAnchor.constraint(equalTo: self.commentButton.rightAnchor, constant: 8).isActive = true
+        self.shareButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        self.shareButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        self.shareButton.widthAnchor.constraint(equalTo: self.likeButton.widthAnchor, constant: 0).isActive = true
     }
 }
