@@ -32,7 +32,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 200)
+        return CGSize(width: collectionView.bounds.width, height: 250)
     }
 }
 
@@ -91,12 +91,22 @@ class FeedCell: UICollectionViewCell {
         return imageView
     }()
     
+    let likesCommentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "488 Likes    10,7k Comments"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.rgb(red: 155, green: 161, blue: 11)
+        return label
+    }()
+    
     func setupViews() {
         self.backgroundColor = .white
         self.addSubview(self.nameLabel)
         self.addSubview(self.profileImageView)
         self.addSubview(self.statusTextView)
         self.addSubview(self.statusImageView)
+        self.addSubview(self.likesCommentLabel)
         
         self.profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         self.profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
@@ -110,14 +120,17 @@ class FeedCell: UICollectionViewCell {
         
         self.statusTextView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.statusTextView.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 8).isActive = true
-//        self.statusTextView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 8).isActive = true
         self.statusTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         self.statusTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         self.statusImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.statusImageView.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 8).isActive = true
-        self.statusImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         self.statusImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         
+        self.likesCommentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
+        self.likesCommentLabel.topAnchor.constraint(equalTo: self.statusImageView.bottomAnchor, constant: 0).isActive = true
+        self.likesCommentLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        self.likesCommentLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
+        self.likesCommentLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
     }
 }
