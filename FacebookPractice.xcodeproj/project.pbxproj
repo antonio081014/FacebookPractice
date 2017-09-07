@@ -13,6 +13,7 @@
 		9A9FD3C71F5DAEDF003EB9ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A9FD3C51F5DAEDF003EB9ED /* LaunchScreen.storyboard */; };
 		9A9FD3D01F5E1CFA003EB9ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FD3CF1F5E1CFA003EB9ED /* Extensions.swift */; };
 		9AA856161F61C63D00854163 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA856151F61C63D00854163 /* FeedCell.swift */; };
+		9AA8561A1F61C7A300854163 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA856191F61C7A300854163 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		9A9FD3C81F5DAEDF003EB9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A9FD3CF1F5E1CFA003EB9ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9AA856151F61C63D00854163 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		9AA856191F61C7A300854163 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		9A9FD3BB1F5DAEDF003EB9ED /* FacebookPractice */ = {
 			isa = PBXGroup;
 			children = (
+				9AA856181F61C79900854163 /* Model */,
 				9AA856171F61C6C000854163 /* Controller */,
 				9AA856141F61C60800854163 /* View */,
 				9A9FD3CE1F5E1CE3003EB9ED /* Helper */,
@@ -89,6 +92,14 @@
 				9A9FD3BE1F5DAEDF003EB9ED /* HomeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9AA856181F61C79900854163 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AA856191F61C7A300854163 /* Post.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +177,7 @@
 				9AA856161F61C63D00854163 /* FeedCell.swift in Sources */,
 				9A9FD3D01F5E1CFA003EB9ED /* Extensions.swift in Sources */,
 				9A9FD3BD1F5DAEDF003EB9ED /* AppDelegate.swift in Sources */,
+				9AA8561A1F61C7A300854163 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

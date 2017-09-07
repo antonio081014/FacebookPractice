@@ -9,6 +9,28 @@
 import UIKit
 
 class FeedCell: UICollectionViewCell {
+    
+    var post: Post? {
+        didSet {
+            guard let post = post else { return }
+            let attributedText = NSMutableAttributedString(string: post.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+            attributedText.append(NSMutableAttributedString(string: "\nDecember 18 • San Francisco • ", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor:UIColor.init(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
+            
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 2
+            attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
+            
+            let attachment = NSTextAttachment()
+            attachment.image = #imageLiteral(resourceName: "globe_small")
+            attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
+            attributedText.append(NSAttributedString(attachment: attachment))
+            
+            nameLabel.attributedText = attributedText
+            
+            self.statusTextView.text = post.statusText
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupViews()
@@ -22,19 +44,6 @@ class FeedCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        let attributedText = NSMutableAttributedString(string: "Mark Zuckerberg", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSMutableAttributedString(string: "\nDecember 18 • San Francisco • ", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor:UIColor.init(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 2
-        attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
-        
-        let attachment = NSTextAttachment()
-        attachment.image = #imageLiteral(resourceName: "globe_small")
-        attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
-        attributedText.append(NSAttributedString(attachment: attachment))
-        
-        label.attributedText = attributedText
         return label
     }()
     
@@ -51,6 +60,7 @@ class FeedCell: UICollectionViewCell {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.text = "Meanwhile, Beast turned to the dark side."
         textView.font = UIFont.systemFont(ofSize: 14)
+        textView.isScrollEnabled = false
         return textView
     }()
     
@@ -119,11 +129,11 @@ class FeedCell: UICollectionViewCell {
         self.statusTextView.leftAnchor .constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.statusTextView.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 8).isActive = true
         self.statusTextView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
-        self.statusTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         self.statusImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.statusImageView.topAnchor.constraint(equalTo: self.statusTextView.bottomAnchor, constant: 8).isActive = true
         self.statusImageView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        self.statusImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
         self.likesCommentLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
         self.likesCommentLabel.topAnchor.constraint(equalTo: self.statusImageView.bottomAnchor, constant: 0).isActive = true
