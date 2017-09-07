@@ -6,9 +6,13 @@
 //  Copyright © 2017 sample.com. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Post {
     var name: String?
+    var profileImageName: String?
     var statusText: String?
+    var statusImageName: String?
+    var numLikies: Int?
+    var numComments: Int?
 }

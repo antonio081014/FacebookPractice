@@ -28,6 +28,10 @@ class FeedCell: UICollectionViewCell {
             nameLabel.attributedText = attributedText
             
             self.statusTextView.text = post.statusText
+            
+            if let profileName = post.profileImageName {
+                self.profileImageView.image = UIImage(named: profileName)
+            }
         }
     }
     

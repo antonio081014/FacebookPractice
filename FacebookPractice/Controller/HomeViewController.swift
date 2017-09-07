@@ -26,10 +26,12 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         let mark = Post()
         mark.name = "Mark Zuckerberg"
         mark.statusText = "Meanwhile, Beast turned to the dark side."
+        mark.profileImageName = "zuckprofile"
         
         let steve = Post()
         steve.name = "Steve Jobs"
         steve.statusText = "Long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long story."
+        steve.profileImageName = "steve_profile"
         
         self.posts.append(mark)
         self.posts.append(steve)
