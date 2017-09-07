@@ -12,6 +12,7 @@
 		9A9FD3C41F5DAEDF003EB9ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A9FD3C31F5DAEDF003EB9ED /* Assets.xcassets */; };
 		9A9FD3C71F5DAEDF003EB9ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A9FD3C51F5DAEDF003EB9ED /* LaunchScreen.storyboard */; };
 		9A9FD3D01F5E1CFA003EB9ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9FD3CF1F5E1CFA003EB9ED /* Extensions.swift */; };
+		9AA856161F61C63D00854163 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA856151F61C63D00854163 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9A9FD3C61F5DAEDF003EB9ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A9FD3C81F5DAEDF003EB9ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A9FD3CF1F5E1CFA003EB9ED /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9AA856151F61C63D00854163 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +56,10 @@
 		9A9FD3BB1F5DAEDF003EB9ED /* FacebookPractice */ = {
 			isa = PBXGroup;
 			children = (
+				9AA856171F61C6C000854163 /* Controller */,
+				9AA856141F61C60800854163 /* View */,
 				9A9FD3CE1F5E1CE3003EB9ED /* Helper */,
 				9A9FD3BC1F5DAEDF003EB9ED /* AppDelegate.swift */,
-				9A9FD3BE1F5DAEDF003EB9ED /* HomeViewController.swift */,
 				9A9FD3C31F5DAEDF003EB9ED /* Assets.xcassets */,
 				9A9FD3C51F5DAEDF003EB9ED /* LaunchScreen.storyboard */,
 				9A9FD3C81F5DAEDF003EB9ED /* Info.plist */,
@@ -70,6 +73,22 @@
 				9A9FD3CF1F5E1CFA003EB9ED /* Extensions.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		9AA856141F61C60800854163 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9AA856151F61C63D00854163 /* FeedCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9AA856171F61C6C000854163 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9A9FD3BE1F5DAEDF003EB9ED /* HomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A9FD3BF1F5DAEDF003EB9ED /* HomeViewController.swift in Sources */,
+				9AA856161F61C63D00854163 /* FeedCell.swift in Sources */,
 				9A9FD3D01F5E1CFA003EB9ED /* Extensions.swift in Sources */,
 				9A9FD3BD1F5DAEDF003EB9ED /* AppDelegate.swift in Sources */,
 			);
