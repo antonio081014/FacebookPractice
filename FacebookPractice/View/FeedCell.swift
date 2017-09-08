@@ -32,6 +32,14 @@ class FeedCell: UICollectionViewCell {
             if let profileName = post.profileImageName {
                 self.profileImageView.image = UIImage(named: profileName)
             }
+            
+            if let statusImage = post.statusImageName {
+                self.statusImageView.image = UIImage(named: statusImage)
+            }
+            
+            if let likes = post.numLikies, let comments = post.numComments {
+                self.likesCommentLabel.text = "\(likes) Likes  \(comments) Comments"
+            }
         }
     }
     
