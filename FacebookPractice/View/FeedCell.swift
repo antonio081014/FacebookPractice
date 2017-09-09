@@ -13,33 +13,39 @@ class FeedCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             guard let post = post else { return }
-            let attributedText = NSMutableAttributedString(string: post.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
-            attributedText.append(NSMutableAttributedString(string: "\nDecember 18 • San Francisco • ", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor:UIColor.init(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
-            
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.lineSpacing = 2
-            attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
-            
-            let attachment = NSTextAttachment()
-            attachment.image = #imageLiteral(resourceName: "globe_small")
-            attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
-            attributedText.append(NSAttributedString(attachment: attachment))
-            
-            nameLabel.attributedText = attributedText
-            
-            self.statusTextView.text = post.statusText
-            
-            if let profileName = post.profileImageName {
-                self.profileImageView.image = UIImage(named: profileName)
-            }
             
             if let statusImage = post.statusImageName {
                 self.statusImageView.image = UIImage(named: statusImage)
             }
             
-            if let likes = post.numLikies, let comments = post.numComments {
-                self.likesCommentLabel.text = "\(likes) Likes  \(comments) Comments"
-            }
+            self.setupNameLocationStatusAndProfileImage()
+        }
+    }
+    
+    private func setupNameLocationStatusAndProfileImage() {
+        guard let post = self.post else { return }
+        let attributedText = NSMutableAttributedString(string: post.name ?? "", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSMutableAttributedString(string: "\nDecember 18 • San Francisco • ", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12), NSAttributedStringKey.foregroundColor:UIColor.init(red: 155/255, green: 161/255, blue: 171/255, alpha: 1)]))
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        attributedText.addAttributes([NSAttributedStringKey.paragraphStyle:paragraphStyle], range: NSRange(location: 0, length: attributedText.string.characters.count))
+        
+        let attachment = NSTextAttachment()
+        attachment.image = #imageLiteral(resourceName: "globe_small")
+        attachment.bounds = CGRect(x: 0, y: -2, width: 12, height: 12)
+        attributedText.append(NSAttributedString(attachment: attachment))
+        
+        nameLabel.attributedText = attributedText
+        
+        self.statusTextView.text = post.statusText
+        
+        if let profileName = post.profileImageName {
+            self.profileImageView.image = UIImage(named: profileName)
+        }
+        
+        if let likes = post.numLikies, let comments = post.numComments {
+            self.likesCommentLabel.text = "\(likes) Likes  \(comments) Comments"
         }
     }
     
